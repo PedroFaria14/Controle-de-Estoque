@@ -1,0 +1,58 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "_LayoutLogin";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ControleEstoque</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styleLgn.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ControleEstoque.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <main>
+        <div>
+            <img src="~/images/user.png" class="img-fluid" alt="Usuario Imagem" />
+        </div>
+        <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="ReturnUrl" />
+        <section class="grid-input">
+            <h3>Logar com usuário</h3>
+            <div>
+                <label for="staticEmail">Usuário</label>
+                <div class="input-designer">
+                        <input asp-for="UserName"
+                           class="form-control-plaintext"
+                        />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label for="inputPassword">Senha</label>
+                <div class="input-designer">
+                        <input asp-for="Password"
+                           class="form-control-plaintext"
+                         />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                  <button type="submit">Entrar</button>
+            </div>
+        </section>
+        </form>
+    </main>
+  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@model ProdutoListViewModel
+
+
+<h1>@Model.CategoriaAtual</h1>
+
+<p>
+    <a class="btn " asp-action="Create">Novo produto</a>
+</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Favoritos
+            </th>
+            <th>
+                Estoque mínimo
+            </th>
+            <th>
+                Estoque máximo
+            </th>
+            <th>
+                Estoque Atual
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Lote
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Produtos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsProdutoPreferido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstoqueMinimo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstoqueMaximo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estoque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.CategoriaNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lote.Referencia)
+                </td>
+                <td class="btn-group btn-group-sm">
+                    <a class="btn  " asp-action="Edit" asp-route-id="@item.ProdutoId">Editar</a>
+                    <a class="btn  " asp-action="Details" asp-route-id="@item.ProdutoId">Detalhes</a>
+                    <a class="btn  " asp-action="Delete" asp-route-id="@item.ProdutoId">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
